@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,11 +19,12 @@ import javax.persistence.Id;
 @ToString
 @Entity
 public class Loan {
-	public Loan(BigDecimal total) {
-		this.total = total;
-	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private BigDecimal total;
+	@Column(name = "user_id")
+    private Integer userId;
+	
 }

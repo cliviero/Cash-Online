@@ -15,12 +15,7 @@ import javax.persistence.*;
 @ToString
 @Entity
 public class User {
-	
-	public User(String email, String firstName, String lastName) {
-		this.email = email;
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -29,6 +24,7 @@ public class User {
 	private String lastName;
 	@OneToMany(targetEntity = Loan.class,cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	@ElementCollection
 	private List<Loan> loans;
 	
 }
